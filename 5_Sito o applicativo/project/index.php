@@ -1,4 +1,14 @@
 <?php 
+    require 'libs/config.php';
+    require 'libs/Bootstrap.php';
+    require 'libs/Controller.php';
+    require 'libs/View.php';
+    $app = new Bootstrap();
+ ?>
+
+
+<?php
+//da spostare
 	if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit"])){
 		require('connect.php');
 		if(isset($r)){
