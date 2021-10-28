@@ -1,7 +1,5 @@
 <?php 
 
-    define('URL',"localhost:8080");
-
     define('DB',"gestione_biblioteca");
 
 	define('USER',"root");

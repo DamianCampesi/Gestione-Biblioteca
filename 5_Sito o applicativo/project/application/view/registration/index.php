@@ -1,8 +1,3 @@
-<?php
-	$r = true; 
-	require('login.php');
- ?>
-
 <!DOCTYPE html>
 <html>
 	<head>
@@ -11,8 +6,8 @@
 	</head>
 	<body>
 		<div id="form">
-			<form class="f" action="#" method="POST">
-				<h1>Registrazione</h1>
+			<form class="f" action="<?php echo URL ?>registration/registration" method="POST">
+				<h1>REGISTRAZIONE</h1>
 				<span>Email:</span>
 				<input type="email" name="Remail">
 				<br>
@@ -24,7 +19,7 @@
 				<br>
 				<input type="submit" name="submit" value="Register" id="enter">
 			</form>
-			<p><a href="registration.php">Register</a></p>
+			<p><a href="<?php echo URL ?>login">Register</a></p>
 		</div>
 
 	</body>

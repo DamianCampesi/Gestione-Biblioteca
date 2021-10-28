@@ -1,5 +1,5 @@
 <?php 
-class Bootstrap{
+class Application{
 
     private $url_controller = null;
     private $url_method = null;
@@ -7,26 +7,30 @@ class Bootstrap{
 
     public function __construct(){
         $this->getUrl();
-        if (file_exists('/controller/'.$this->url_controller . '.php')) {
-            require $this->url_controller . '.php';
+        if (file_exists('application/controller/'.$this->url_controller . '.php')) {
+            require 'application/controller/'.$this->url_controller . '.php';
             $this->url_controller = new $this->url_controller();
-            if (method_exists($this->url_controller, $this->url_action)) {
+            if (method_exists($this->url_controller, $this->url_method)) {
                 if (isset($this->url_parameter_3)) {
-                    $this->url_controller->{$this->url_action}($this->url_parameter_1,
+                    $this->url_controller->{$this->url_method}($this->url_parameter_1,
                     $this->url_parameter_2,$this->url_parameter_3);
                 } elseif (isset($this->url_parameter_2)) {
-                    $this->url_controller->{$this->url_action}($this->url_parameter_1,
+                    $this->url_controller->{$this->url_method}($this->url_parameter_1,
                     $this->url_parameter_2);
                 } elseif (isset($this->url_parameter_1)) {
-                    $this->url_controller->{$this->url_action}($this->url_parameter_1);
+                    $this->url_controller->{$this->url_method}($this->url_parameter_1);
                 } else {
-                    $this->url_controller->{$this->url_action}();
+                    $this->url_controller->{$this->url_method}();
                 }
             } else {
                 $this->url_controller->index();
             }
+        }elseif(empty($this->url_controller)){
+            require "application/controller/index.php";
+            $index = new Index();
+            $index->index();
         } else {
-            require __DIR__ . "/../controller/MyError.php";
+            require "application/controller/myerror.php";
             $error = new MyError();
             $error->index();
         }
