@@ -6,14 +6,16 @@ class Registration extends Controller{
         parent::__construct();
     }
     function index(){
-        $this->view->render(REGISTRATIONPAGE);
+        $this->view->render(REGISTRATIONPAGE,1);
     }
     function registration(){
         $this->model = new Registration_Model();
         if($this->model->registration()){
-            $this->view->render("login/index");
+            $this->view->render(REGISTRATIONPAGE,1);
+            echo $this->model->msg;
         }else{
-            $this->view->render("registration/index");
+            $this->view->render(REGISTRATIONPAGE,1);
+            echo $this->model->msg;
         }
     }
 }

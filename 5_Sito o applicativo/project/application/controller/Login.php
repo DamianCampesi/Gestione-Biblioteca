@@ -6,14 +6,14 @@ class Login extends Controller{
         parent::__construct();
     }
     function index(){
-        $this->view->render(LOGINPAGE);
+        $this->view->render(LOGINPAGE,1);
     }
     function login(){
         $this->model = new Login_Model();
         if($this->model->login()){
-            $this->view->render("home/index");
+            $this->view->render(HOMEPAGE);
         }else{
-            $this->view->render("login/index");
+            $this->view->render(LOGINPAGE,1);
            echo $this->model->msg;
 
         }

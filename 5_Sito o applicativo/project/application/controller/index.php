@@ -4,6 +4,6 @@
             parent::__construct();
         }
         function index(){
-            $this->view->render(LOGINPAGE);
+            $this->view->render(LOGINPAGE,1);
         }
     }

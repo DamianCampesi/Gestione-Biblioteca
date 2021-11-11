@@ -3,6 +3,7 @@
     require 'application/libs/Controller.php';
     require 'application/libs/Model.php';
     require 'application/model/Login_Model.php';
+    require 'application/model/home_book_Model.php';
     require 'application/model/Registration_Model.php';
     require 'application/libs/View.php';
     require 'application/config/path.php';
