@@ -4,6 +4,10 @@
             parent::__construct();
         }
         function index(){
-            $this->view->render(LOGINPAGE,1);
+            if(empty($_SESSION["id"])){
+                $this->view->render(LOGINPAGE,1);
+            }else{
+                $this->view->render(HOMEPAGE,1);
+            }
         }
     }

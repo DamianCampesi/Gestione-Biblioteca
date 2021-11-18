@@ -4,9 +4,13 @@
             parent::__construct();
         }
         function viewBooks(){
+            require 'application/config/connect.php';
             $query = "SELECT * FROM book";
             $result = $conn->query($query);
-            $rows = $result->fetch_assoc();
-            return $rows;
+            $out = array();            
+            while($rows = $result->fetch_assoc()){
+                array_push($out,$rows);
+            }
+            return $out;
         }
     }
