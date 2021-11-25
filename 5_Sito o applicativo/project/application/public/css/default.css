@@ -46,36 +46,7 @@ html, body {
     padding-right: 15px;
     }
     a{
-        text-decoration: none;
-
-    }
-    .topnav {
-        border: 1px solid red;
-        width: 100%;;
-        overflow: hidden;
-        background-color: #333;
-      }
-      
-      .topnav a {
-        float: left;
-        color: #f2f2f2;
-        text-align: center;
-        padding: 14px 16px;
-        text-decoration: none;
-        font-size: 17px;
-      }
-      
-      .topnav a:hover {
-        background-color: #ddd;
-        color: black;
-      }
-      
-      .topnav a.active {
-        background-color: #04AA6D;
-        color: white;
-      }
-    a:hover{
-        text-decoration: underline;
+      text-decoration: none;
     }
     /* Change styles for span on extra small screens */
     @media screen and (max-width: 300px) {
