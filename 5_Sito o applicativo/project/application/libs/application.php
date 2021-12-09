@@ -3,7 +3,7 @@ class Application{
 
     private $url_controller = null;
     private $url_method = null;
-    private $url_parameter = null;
+    private $url_parameter_1 = null;
 
     public function __construct(){
         $this->getUrl();
@@ -43,7 +43,7 @@ class Application{
 
             $this->url_controller = (isset($url[0]) ? $url[0] : null);
             $this->url_method = (isset($url[1]) ? $url[1] : null);
-            $this->url_parameter = (isset($url[2]) ? $url[2] : null);
+            $this->url_parameter_1 = (isset($url[2]) ? $url[2] : null);
         }
     }
 }

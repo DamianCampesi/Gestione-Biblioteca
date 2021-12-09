@@ -1,5 +1,5 @@
 <?php 
-	//funzioni di controllo	
+	//funzioni di controllo	di stringhe e email
 	function validateString($s){
 		$s = stripslashes($s);
 		$s = htmlspecialchars($s);

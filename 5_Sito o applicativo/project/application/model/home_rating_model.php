@@ -5,7 +5,7 @@
         }
         function viewRating(){
             require 'application/config/connect.php';
-            $query = "SELECT book_id,valutazione FROM rating";
+            $query = "SELECT book_id,valutazione FROM rating ORDER BY valutazione DESC";
             $result = $conn->query($query);
             $booksId = array();
             while($rows = $result->fetch_assoc()){

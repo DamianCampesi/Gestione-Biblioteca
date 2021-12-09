@@ -1,4 +1,5 @@
 <?php 
+    //costanti che utilizzo nel resto del codice
 define('LOGINPAGE','login/index');
 define('REGISTRATIONPAGE','registration/index');
 define('HOMEPAGE','home/index');

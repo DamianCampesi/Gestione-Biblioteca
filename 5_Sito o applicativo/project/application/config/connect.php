@@ -1,4 +1,5 @@
 <?php 
+	// connessione al server MySQL
 	$db = "gestione_biblioteca";
 	$user = "root";
 	$password = "";

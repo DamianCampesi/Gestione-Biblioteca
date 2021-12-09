@@ -1,4 +1,5 @@
 <?php 
+    date_default_timezone_set("Europe/Zurich");
     require 'application/libs/application.php';
     require 'application/libs/Controller.php';
     require 'application/libs/Model.php';
