@@ -6,40 +6,35 @@
         function viewRent(){
             require 'application/config/connect.php';
             $final =array();
-            $query = "SELECT book_id FROM rent WHERE user_id='".$_SESSION["id"]."'";
+            $query = "SELECT book.title, rent.start_date, rent.end_date FROM rent INNER JOIN book ON book.id = rent.book_id Where rent.user_id ='".$_SESSION["id"]. "';";
             $result = $conn->query($query);
-            $booksId = array();
+            $out = array();
             while($rows = $result->fetch_assoc()){
-                array_push($booksId,$rows);
+                array_push($out,$rows);
             }
-            $out =array();
-            $out2 =array();
-            for($i=0;$i<count($booksId);$i++){
-                $query = "SELECT title FROM book WHERE id='".$booksId[$i]["book_id"]."'";
-                $result = $conn->query($query);
-                $row = $result->fetch_assoc();
-                $out[] = $row;
-            }
-            $query = "SELECT start_date,end_date,book_id FROM rent WHERE user_id='".$_SESSION["id"]."'";
-            $result = $conn->query($query);
-            $row = $result->fetch_assoc();
-            while($rows = $result->fetch_assoc()){
-                array_push($out2,$rows);
-            }
-            for($i=0;$i<count($out2);$i++){
-                $final[] = array("title" => $out[$i]["title"], "start_date" =>$out2[$i]["start_date"], "end_date" =>$out2[$i]["end_date"]);
-            }
-            return $final;
+            return $out;
         }
         function doRent($id){
-            require 'application/config/connect.php';
-            if(is_int($id) && $id >= 30 && $id <= 90){
-                echo ciao;
-                $now = date(Y-m-d);
-                $end = date_add($now,date_interval_create_from_date_string("$id days"));
+            $rentTime = $_POST["rentTime"];
+            $rentTime = intval($rentTime);
+            //echo gettype($id);
+            filter_var($rentTime, FILTER_SANITIZE_NUMBER_INT);
+            if($rentTime >=30 and $rentTime <=90){
+                require 'application/config/connect.php';
+                $now = new DateTime();
+                $dayDiff = new DateInterval("P".$rentTime."D");
+                $end = $now;
+                $now = $now->format("Y-m-d");
+                $end->add($dayDiff);
+                $end = $end->format("Y-m-d");
                 $query = "INSERT INTO rent(start_date,end_date,user_id,book_id) VALUES('$now','$end',".$_SESSION["id"].",$id)";
                 $result = $conn->query($query);
-                $row = $result->fetch_assoc();
+                $query = "SELECT * from rent WHERE user_id ='".$_SESSION["id"]."' AND book_id ='".$id."'";
+                $result = $conn->query($query);
+                if($row = $result->fetch_assoc() > 0){
+                    return true;
+                }
+                return false;
             }
         }
     }

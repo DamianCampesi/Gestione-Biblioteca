@@ -10,6 +10,10 @@
                 $this->view->render(HOMEPAGE,1);
             }
         }
+        function logout(){
+            session_destroy();
+            $this->view->render("login/index",1);
+        }
         function viewBooks(){
             $this->model = new Home_Book_Model();
             $this->view->books = $this->model->viewBooks();
@@ -32,6 +36,11 @@
         }
         function doRent($id){
             $this->model = new Home_Rent_Model();
-            $this->view->rent = $this->model->doRent($id);
+            if($this->model->doRent($id)){
+                //$this->view->rent = $this->model->doRent($id);
+                $this->view->render("home/rentSuccess",1);
+            }else{
+                $this->view->render("home/rentError",1);
+            }
         }
     }

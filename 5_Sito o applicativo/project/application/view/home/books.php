@@ -15,7 +15,7 @@
                     molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
                     numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
                     optio, eaque rerum! Provident similique accusantium nemo autem.</p>
-                <p>Autore: <?php echo $this->books[$i]["author"]; ?></a>
+                <span><strong>Autore: <?php echo $this->books[$i]["author"]; ?></strong></span>
                 <br>
                 <br>
                 <div class="primary-button">
