@@ -10,7 +10,7 @@
                 $email = $_POST["email"];
                 $pw = $_POST["password"];
                 
-                //controlla i valori passati
+                //controlla i valori passatis
                 $email = validateEmail($email);
                 $pw = validateString($pw);
 

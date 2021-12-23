@@ -3,12 +3,16 @@
 		function __construct(){
 			//costrutore vuoto
 		}
-		/*in base ai permessi, renderizzo le pagine necessarie
-		*il bibliotecario avrà un menu con più funzionalità
-		*/
+		/**
+		 * Funzione che in base ai permessi, renderizza le pagine necessarie
+		 *
+		 * $_SESSION['is_librarian'] vuota --> non loggato
+		 * $_SESSION['is_librarian'] == 0 --> utente normale
+		 * $_SESSION['is_librarian'] == 1 --> biblitecario
+		 */
 		function render($name,$renderAll = false){
 			if($renderAll){
-				if(empty($_SESSION['is_librarian'])){
+				if(!isset($_SESSION['is_librarian'])){
 					require_once 'application/view/loginHeader.php';
 					require_once 'application/view/' . $name . '.php';
 					require_once 'application/view/loginFooter.php';

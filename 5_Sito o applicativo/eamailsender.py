@@ -25,24 +25,25 @@ def getUsersToBeNotified():
     )
     mycursor = mydb.cursor()
 
-    mycursor.execute("SELECT user_id from rent WHERE end_date >= DATE_SUB(NOW(),INTERVAL 7 DAY)")
-    myresult = mycursor.fetchall()
-    
-    for i in zip(*myresult):
-        print(list(i))
+    mycursor.execute("SELECT user.email,rent.end_date from rent INNER JOIN user ON user.id = rent.user_id WHERE rent.end_date >= DATE_SUB(NOW(),INTERVAL 7 DAY)")
+    myresult = list(mycursor.fetchall())
+    return myresult
+
+
 ##############utilizzo il metodo per porte inviare la mail
 ricevitore = "damian.campesi@samtrevano.ch"
 oggetto = "Avviso scadenza noleggio"
 messaggio = "Questa email e' stata inviata autmaticamente.\n\r\n\r Il termine previsto per il tuo noleggio di un libro e' tra una settimana."
 
 
-getUsersToBeNotified()
+
 #send_email(ricevitore,oggetto,messaggio)
 #print("Use Ctrl-c to stop the program.\n")
-#wait = input("Waiting time (H): ")
-#x=3
-#while x>0:
-#    time.sleep(float(wait)*3600)
-#    print("works")
-#    x = x-1
+users = getUsersToBeNotified()
+wait = input("Waiting time (H): ")
+while True:
+    time.sleep(float(wait)*3600)
+    for i in users:
+        print(i)
+    
     

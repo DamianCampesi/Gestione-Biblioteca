@@ -5,18 +5,11 @@
         }
         function viewRating(){
             require 'application/config/connect.php';
-            $query = "SELECT book_id,valutazione FROM rating ORDER BY valutazione DESC";
+            $query = "SELECT book.title, book.cover_image, ROUND(AVG(rating.valutazione),1) as media from rating INNER JOIN book ON book.id = rating.book_id GROUP BY book.id;";
             $result = $conn->query($query);
-            $booksId = array();
-            while($rows = $result->fetch_assoc()){
-                array_push($booksId,$rows);
-            }
             $out = array();
-            for($i=0;$i<count($booksId);$i++){
-                $query = "SELECT title FROM book WHERE id='".$booksId[$i]["book_id"]."'";
-                $result = $conn->query($query);
-                $row = $result->fetch_assoc();
-                $out[] = array("title" => $row["title"], "valutazione" =>$booksId[$i]["valutazione"]);
+            while($rows = $result->fetch_assoc()){
+                array_push($out,$rows);
             }
             return $out;
         }

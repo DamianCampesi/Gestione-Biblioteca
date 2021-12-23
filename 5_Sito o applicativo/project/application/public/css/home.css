@@ -1,0 +1,19 @@
+body{
+    font-family: sans-serif;
+}
+.navbar{
+    padding: 10px;
+    border-radius: 0px 0px 10px 10px;
+}
+h1{
+    padding-top: 20px;
+}
+.col{
+    margin-top: 15px;
+}
+.col-md-4{
+    margin-top: 15px;
+}
+.col-lg{
+    margin-top: 15px;
+}

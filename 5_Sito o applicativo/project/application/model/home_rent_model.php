@@ -6,7 +6,7 @@
         function viewRent(){
             require 'application/config/connect.php';
             $final =array();
-            $query = "SELECT book.title, rent.start_date, rent.end_date FROM rent INNER JOIN book ON book.id = rent.book_id Where rent.user_id ='".$_SESSION["id"]. "';";
+            $query = "SELECT book.title, rent.start_date, rent.end_date FROM rent INNER JOIN book ON book.id = rent.book_id WHERE rent.user_id ='".$_SESSION["id"]. "';";
             $result = $conn->query($query);
             $out = array();
             while($rows = $result->fetch_assoc()){
@@ -28,6 +28,8 @@
                 $end->add($dayDiff);
                 $end = $end->format("Y-m-d");
                 $query = "INSERT INTO rent(start_date,end_date,user_id,book_id) VALUES('$now','$end',".$_SESSION["id"].",$id)";
+                $result = $conn->query($query);
+                $query = "UPDATE book SET is_rented = 1 WHERE id=+".$id."";
                 $result = $conn->query($query);
                 $query = "SELECT * from rent WHERE user_id ='".$_SESSION["id"]."' AND book_id ='".$id."'";
                 $result = $conn->query($query);
