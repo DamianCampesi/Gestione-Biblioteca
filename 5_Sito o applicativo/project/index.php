@@ -6,12 +6,12 @@
     require 'application/libs/Model.php';
     require 'application/libs/View.php';
     //models
-    require 'application/model/Login_Model.php';
-    require 'application/model/home_book_Model.php';
-    require 'application/model/home_rent_Model.php';
-    require 'application/model/home_rating_Model.php';
-    require 'application/model/Registration_Model.php';
-    require 'application/model/librarian_management_Model.php';
+    require 'application/model/login_model.php';
+    require 'application/model/home_book_model.php';
+    require 'application/model/home_rent_model.php';
+    require 'application/model/home_rating_model.php';
+    require 'application/model/registration_model.php';
+    require 'application/model/librarian_management_model.php';
     //connection-config
     require 'application/config/path.php';
     require 'application/config/control.php';

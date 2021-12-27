@@ -1,5 +1,9 @@
 <?php 
     class LibrarianHome extends Controller{
+        /**
+         * Questo controller lo utilizzo per tutte le funzionalità del bibliotecario.
+         * Questo controller è simile al controller home che però ha meno funzionalità.
+         */
         function __construct(){
             parent::__construct();
         }
@@ -16,7 +20,7 @@
                 $this->view->books = $this->model->viewBooks();
                 $this->view->render("management/editBooks",1);
             }else{
-                
+                $this->view->render(HOMEPAGE,1);
             }
         }
         function viewBook($id){
@@ -25,7 +29,7 @@
                 $this->view->book = $this->model->viewBook($id);
                 $this->view->render("management/editBook",1);
             }else{
-                
+                $this->view->render(HOMEPAGE,1);
             }
         }
         function editBook($id){
@@ -37,7 +41,7 @@
                     $this->view->render("management/editError",1);
                 }
             }else{
-                
+                $this->view->render(HOMEPAGE,1);
             }
         }
         function removeBook($id){
@@ -49,7 +53,7 @@
                     $this->view->render("management/removeError",1);
                 }
             }else{
-                
+                $this->view->render(HOMEPAGE,1);
             }
         }
         function addBook(){
@@ -61,14 +65,14 @@
                     $this->view->render("management/editError",1);
                 }
             }else{
-                
+                $this->view->render(HOMEPAGE,1);
             }
         }
         function viewForm(){
             if($_SESSION['is_librarian'] == "1"){
                 $this->view->render("management/addBook",1);
             }else{
-                
+                $this->view->render(HOMEPAGE,1);
             }
         }
         function viewRating(){
@@ -79,7 +83,7 @@
                 $this->view->users = $this->model->viewUsers();
                 $this->view->render("management/editRating",1);
             }else{
-                
+                $this->view->render(HOMEPAGE,1);
             }
         }
         function insertRating(){
@@ -91,7 +95,7 @@
                     $this->view->render("management/ratingError",1);
                 }
             }else{
-                
+                $this->view->render(HOMEPAGE,1);
             }
         }
         function removeRating($id){
@@ -103,7 +107,7 @@
                     $this->view->render("management/removeRatingError",1);
                 }
             }else{
-                
+                $this->view->render(HOMEPAGE,1);
             }
         }
         function viewRent(){
@@ -112,7 +116,7 @@
                 $this->view->rent = $this->model->viewRent();
                 $this->view->render("management/viewRent",1);
             }else{
-                
+                $this->view->render(HOMEPAGE,1);
             }
         }
         function removeRent($userId,$bookId){
@@ -124,7 +128,7 @@
                     $this->view->render("management/removeRentError",1);
                 }
             }else{
-                
+                $this->view->render(HOMEPAGE,1);
             }
         }
     }
